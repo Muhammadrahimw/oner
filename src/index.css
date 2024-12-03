@@ -7,3 +7,13 @@
 	padding: 0;
 	box-sizing: border-box;
 }
+
+tr {
+	transition: 0.4s;
+}
+
+.bgStyle {
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}

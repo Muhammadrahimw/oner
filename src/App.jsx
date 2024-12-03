@@ -1,14 +1,22 @@
 import {useState} from "react";
+import MainLayoutComponent from "./components/layout";
+import Showcase from "./components/showcase";
+import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import HomePage from "./pages/home";
 
-function App() {
-	const [count, setCount] = useState(0);
+let router = createBrowserRouter([
+	{
+		path: `/`,
+		element: <MainLayoutComponent />,
+		children: [
+			{index: true, element: <HomePage />},
+			// {}
+		],
+	},
+]);
 
-	return (
-		<main>
-			<HomePage />
-		</main>
-	);
+function App() {
+	return <RouterProvider router={router} />;
 }
 
 export default App;
