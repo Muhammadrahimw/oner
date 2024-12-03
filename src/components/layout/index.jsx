@@ -10,7 +10,7 @@ import Showcase from "../showcase";
 
 function MainLayoutComponent() {
 	return (
-		<div className="bg-[#FAFAFD]">
+		<div className="">
 			<header className="w-[90%] mx-auto mt-4">
 				<div className="flex items-center justify-between gap-4 headerTop max-[1100px]:text-xs max-[900px]:text-base max-[900px]: tr">
 					<div className="w-[500px] max-w-[205px] logo">
