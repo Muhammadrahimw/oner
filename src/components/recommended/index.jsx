@@ -1,4 +1,3 @@
-import React from "react";
 import useAxios from "../../hooks/useAxiosHook";
 import {FaRegStar, FaStar} from "react-icons/fa6";
 import {CiShoppingCart} from "react-icons/ci";
@@ -9,7 +8,7 @@ function Recommended() {
 		method: `GET`,
 	});
 
-	let reverseData = [...data].reverse();
+	let localData = JSON.parse(localStorage.getItem(`shop`)) || [];
 
 	if (loading) return <h1>Loading...</h1>;
 	if (error) return <h1 className="text-red-600">Error: {error.message}</h1>;
@@ -17,7 +16,7 @@ function Recommended() {
 	return (
 		<section className="w-[90%] mx-auto bg-white">
 			<h2 className="text-[1.5em] font-bold mb-5">Рекомендуем</h2>
-			<div className="grid grid-cols-4 gap-5 mb-[3.75em]">
+			<div className="grid grid-cols-4 gap-5 mb-[3.75em] max-xl:grid-cols-3 tr max-[930px]:grid-cols-2 max-sm:text-xs max-[480px]:grid-cols-1 max-[480px]:text-sm">
 				{data.map((value, idx) => (
 					<div
 						key={idx}
@@ -46,7 +45,9 @@ function Recommended() {
 										{value.price_old}
 									</span>
 								</p>
-								<div className="p-2 rounded-md bg-[#6B59CC] cursor-pointer">
+								<div
+									onClick={() => {}}
+									className="p-2 rounded-md bg-[#6B59CC] cursor-pointer">
 									<CiShoppingCart className="font-bold text-white scale-150" />
 								</div>
 							</div>
@@ -55,8 +56,8 @@ function Recommended() {
 				))}
 			</div>
 			<h2 className="text-[1.5em] font-bold mb-5">Часто продаваемые</h2>
-			<div className="grid grid-cols-4 gap-5 mb-[3.75em]">
-				{reverseData.map((value, idx) => (
+			<div className="grid grid-cols-4 gap-5 mb-[3.75em] max-xl:grid-cols-3 tr max-[930px]:grid-cols-2 max-sm:text-xs max-[480px]:grid-cols-1 max-[480px]:text-sm">
+				{data.reverse().map((value, idx) => (
 					<div
 						key={idx}
 						className="w-full h-full p-5 border border-gray-200 rounded-lg card hover:shadow-md">

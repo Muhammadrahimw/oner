@@ -5,20 +5,21 @@ import {FaRegUser} from "react-icons/fa6";
 import {TiThSmall} from "react-icons/ti";
 import {CiShoppingCart} from "react-icons/ci";
 import {TbMessageDots} from "react-icons/tb";
-import {Outlet} from "react-router-dom";
+import {Link, Links, Outlet} from "react-router-dom";
 import Showcase from "../showcase";
+import Basket from "../basket";
 
 function MainLayoutComponent() {
 	return (
 		<div className="">
 			<header className="w-[90%] mx-auto mt-4">
 				<div className="flex items-center justify-between gap-4 headerTop max-[1100px]:text-xs max-[900px]:text-base max-[900px]: tr">
-					<div className="w-[500px] max-w-[205px] logo">
-						<a href="/index.html">
+					<Link to="/">
+						<div className="w-[500px] max-w-[205px] logo">
 							<img className="w-full" src="/logo.svg" alt="logo" />
-						</a>
-					</div>
-					<div className="flex rounded justify-between border border-gray-3 px-2 items-center gap-2 searchDiv bg-[#f4f5f6] h-10 max-w-full min-w-[23em] max-[1310px]:min-w-[7em] tr">
+						</div>
+					</Link>
+					<div className="flex rounded justify-between border border-gray-3 px-2 items-center gap-2 searchDiv bg-[#f4f5f6] h-10 max-w-full min-w-[23em] max-[1310px]:min-w-[7em] max-[902px]:w-full tr">
 						<input
 							className="text-[1.1em] w-full h-full bg-transparent outline-none"
 							type="text"
@@ -26,7 +27,7 @@ function MainLayoutComponent() {
 						/>
 						<CiSearch className="text-2xl" />
 					</div>
-					<div className="flex items-center justify-between w-full gap-4 infos text-[1.1em]">
+					<div className="flex items-center justify-between w-full gap-4 infos text-[1.1em] max-[902px]:hidden">
 						<div className="flex items-center gap-2 location">
 							<IoLocationOutline />
 							<p className=""> Санкт-Петербург</p>
@@ -44,7 +45,7 @@ function MainLayoutComponent() {
 					</div>
 				</div>
 				<hr className="my-3" />
-				<div className="flex items-center justify-between gap-1 category max-[1480px]:text-xs max-[1150px]:grid max-[1150px]:grid-cols-4 max-[1150px]:text-base max-[1150px]:gap-2 tr">
+				<div className="flex items-center justify-between gap-1 category max-[1480px]:text-xs max-[1150px]:grid max-[1150px]:grid-cols-4 max-[1150px]:text-base max-[1150px]:gap-2 tr max-[802px]:flex max-[802px]:flex-wrap max-[400px]:grid max-[400px]:grid-cols-1">
 					<div className="bg-[#6b59cc] px-5 py-3 flex items-center gap-2 rounded-md text-white cursor-pointer">
 						<TiThSmall />
 						<p>Все категории</p>
@@ -67,13 +68,15 @@ function MainLayoutComponent() {
 					<div className="px-5 py-3 hover:bg-[#f4f5f6] rounded-md cursor-pointer">
 						<p>Аккумуляторы</p>
 					</div>
-					<div className="px-5 py-3 hover:bg-[#f4f5f6] rounded-md cursor-pointer flex items-center gap-2 font-medium">
-						<CiShoppingCart className="scale-150 text-[#6b59cc]" />
-						<p>Корзина</p>
-						<div className=" w-6 h-6 rounded-full bg-[#fb6019] flex justify-center items-center text-white">
-							5
+					<Link to="Basket">
+						<div className="px-5 py-3 hover:bg-[#f4f5f6] rounded-md cursor-pointer flex items-center gap-2 font-medium">
+							<CiShoppingCart className="scale-150 text-[#6b59cc]" />
+							<p>Корзина</p>
+							<div className=" w-6 h-6 rounded-full bg-[#fb6019] flex justify-center items-center text-white">
+								5
+							</div>
 						</div>
-					</div>
+					</Link>
 				</div>
 			</header>
 			<main>
