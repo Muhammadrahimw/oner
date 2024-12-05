@@ -65,9 +65,11 @@ function MainLayoutComponent() {
 					<div className="px-5 py-3 hover:bg-[#f4f5f6] rounded-md cursor-pointer">
 						<p>Лампочки</p>
 					</div>
-					<div className="px-5 py-3 hover:bg-[#f4f5f6] rounded-md cursor-pointer">
-						<p>Аккумуляторы</p>
-					</div>
+					<Link to="Likes">
+						<div className="px-5 py-3 hover:bg-[#f4f5f6] rounded-md cursor-pointer">
+							<p>Likes</p>
+						</div>
+					</Link>
 					<Link to="Basket">
 						<div className="px-5 py-3 hover:bg-[#f4f5f6] rounded-md cursor-pointer flex items-center gap-2 font-medium">
 							<CiShoppingCart className="scale-150 text-[#6b59cc]" />

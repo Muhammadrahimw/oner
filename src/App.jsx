@@ -5,6 +5,7 @@ import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import HomePage from "./pages/home";
 import Basket from "./components/basket";
 import {MyProvider} from "./contexts/useReduceHook";
+import Likes from "./components/likes";
 
 let router = createBrowserRouter([
 	{
@@ -13,6 +14,7 @@ let router = createBrowserRouter([
 		children: [
 			{index: true, element: <HomePage />},
 			{path: `Basket`, element: <Basket />},
+			{path: `Likes`, element: <Likes />},
 		],
 	},
 ]);

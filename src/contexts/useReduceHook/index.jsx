@@ -20,7 +20,13 @@ function reducer(state, action) {
 
 			localStorage.setItem("shop", JSON.stringify(updatedShop));
 			return {shop: updatedShop};
-
+		case "isLiked":
+			let likedItems = JSON.parse(localStorage.getItem("isLiked")) || [];
+			if (!likedItems.includes(action.payload.id)) {
+				likedItems.push(action.payload.id);
+			}
+			localStorage.setItem("isLiked", JSON.stringify(likedItems));
+			return state;
 		default:
 			return state;
 	}
