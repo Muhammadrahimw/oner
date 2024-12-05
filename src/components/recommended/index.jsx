@@ -1,6 +1,7 @@
 import useAxios from "../../hooks/useAxiosHook";
 import {FaRegStar, FaStar} from "react-icons/fa6";
 import {CiShoppingCart} from "react-icons/ci";
+import {useMyContext} from "../../contexts/useReduceHook";
 
 function Recommended() {
 	let {data, loading, error} = useAxios({
@@ -8,7 +9,7 @@ function Recommended() {
 		method: `GET`,
 	});
 
-	let localData = JSON.parse(localStorage.getItem(`shop`)) || [];
+	const {dispatch} = useMyContext();
 
 	if (loading) return <h1>Loading...</h1>;
 	if (error) return <h1 className="text-red-600">Error: {error.message}</h1>;
@@ -46,7 +47,9 @@ function Recommended() {
 									</span>
 								</p>
 								<div
-									onClick={() => {}}
+									onClick={() =>
+										dispatch({type: "add", payload: {id: value.id}})
+									}
 									className="p-2 rounded-md bg-[#6B59CC] cursor-pointer">
 									<CiShoppingCart className="font-bold text-white scale-150" />
 								</div>
@@ -85,7 +88,11 @@ function Recommended() {
 										{value.price_old}
 									</span>
 								</p>
-								<div className="p-2 rounded-md bg-[#6B59CC] cursor-pointer">
+								<div
+									onClick={() =>
+										dispatch({type: "add", payload: {id: value.id}})
+									}
+									className="p-2 rounded-md bg-[#6B59CC] cursor-pointer">
 									<CiShoppingCart className="font-bold text-white scale-150" />
 								</div>
 							</div>

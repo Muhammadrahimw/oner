@@ -2,16 +2,27 @@ import React, {useReducer, createContext, useContext} from "react";
 
 const MyContext = createContext();
 
-const initialState = {count: 0};
+const initialState = {shop: []};
 
 function reducer(state, action) {
 	switch (action.type) {
-		case "increment":
-			return {count: state.count + 1};
-		case "decrement":
-			return {count: state.count - 1};
+		case "add":
+			const updatedShop = [...state.shop];
+			const existingItem = updatedShop.find(
+				(item) => item.id === action.payload.id
+			);
+
+			if (existingItem) {
+				existingItem.count += 1;
+			} else {
+				updatedShop.push({id: action.payload.id, count: 1});
+			}
+
+			localStorage.setItem("shop", JSON.stringify(updatedShop));
+			return {shop: updatedShop};
+
 		default:
-			state;
+			return state;
 	}
 }
 

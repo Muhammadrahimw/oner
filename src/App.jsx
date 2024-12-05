@@ -4,6 +4,7 @@ import Showcase from "./components/showcase";
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import HomePage from "./pages/home";
 import Basket from "./components/basket";
+import {MyProvider} from "./contexts/useReduceHook";
 
 let router = createBrowserRouter([
 	{
@@ -17,7 +18,11 @@ let router = createBrowserRouter([
 ]);
 
 function App() {
-	return <RouterProvider router={router} />;
+	return (
+		<MyProvider>
+			<RouterProvider router={router} />
+		</MyProvider>
+	);
 }
 
 export default App;
